@@ -1,0 +1,141 @@
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+<div class="container main-container justify-content-between shadow">
+  <div class="row">
+    <div class="col-9" style="color: green">
+      <h5>Lucros em reais</h5>
+      <h1>R$ 9000.00</h1>
+    </div>
+
+    <div class="col" style="color: red">
+      <h5>Prejuízo em reais</h5>
+      <h1>{{ token }}</h1>
+    </div>
+  </div>
+</div>
+<br>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Novo fluxo</h5>
+
+      </div>
+      <div class="modal-body">
+
+        <form (ngSubmit)="handleSubmit()" [formGroup]="frmAll">
+          <div class="row">
+            <div class="col">
+              <input type="text" class="form-control" formControlName="name" placeholder="Usuario" >
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" formControlName="title" placeholder="Titulo">
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col">
+              <input type="text" class="form-control" formControlName="value" placeholder="Valor">
+            </div>
+            <div class="col">
+              <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+              <label class="btn btn-outline-success" for="btnradio1">Entrada</label>
+              <input type="radio" class="btn btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+              <label class="btn btn-outline-danger ml-2" for="btnradio2">Saída</label>
+            </div>
+          </div>
+
+
+        </form>
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Close</button>
+        <button type="button" class="btn btn-primary" (click)="handleSubmit()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<form [formGroup]="loginFrm" (ngSubmit)="handleLogin()" >
+  <div class="container">
+    <div class="row">
+      <div class="col text-center">
+        <h2 class="alert alert-primary">Login no sistema</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <input type="text" class="form-control" placeholder="Email" formControlName="email">
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col">
+        <input type="password" class="form-control" placeholder="Password" formControlName="password">
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row text-center">
+      <div class="col">
+        <button class="btn btn-primary btn-login" type="submit">Login</button>
+      </div>
+    </div>
+    <br>
+  
+
+  </div>
+</form>
+
+<hr>
+
+<div class="container">
+  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" (click)="openModal()">
+    <b>Inserir novo fluxo</b>
+  </button>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
