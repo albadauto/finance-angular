@@ -16,7 +16,7 @@
 
     <div class="col" style="color: red">
       <h5>Prejuízo em reais</h5>
-      <h1>{{ token }}</h1>
+      <h1>R$ 5000.00</h1>
     </div>
   </div>
 </div>
@@ -93,6 +93,9 @@
     <div class="row text-center">
       <div class="col">
         <button class="btn btn-primary btn-login" type="submit">Login</button>
+      </div>
+      <div class="col">
+        <a class="btn btn-danger btn-login"(click)="handleUnsign()">Deslogar</a>
       </div>
     </div>
     <br>

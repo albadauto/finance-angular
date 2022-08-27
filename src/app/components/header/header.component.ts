@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
-import { IAppState, incrementaContador, decrementaContador } from 'src/app/store/app.state';
+import { IHeader, loginAction, unsignAction } from 'src/app/store/header.state';
 
 @Component({
   selector: 'app-header',
@@ -10,25 +10,23 @@ import { IAppState, incrementaContador, decrementaContador } from 'src/app/store
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private store: Store<{app: IAppState}>) { }
+  constructor(private store: Store<{login: IHeader}>) { }
   teste!: string;
   token!: string;
-  valor$ = this.store.select('app').pipe(
-    map(e => e.counter)
+  login$ = this.store.select('login').pipe(
+    map(e => e.login)
   )
   ngOnInit(): void {
-    if (sessionStorage.getItem("token")){
-      this.token = sessionStorage.getItem("token") as string;
+    if (sessionStorage.getItem('token') !== null){
+      this.store.dispatch(loginAction());
     }else{
-      console.log("SEi la")
+      this.store.dispatch(unsignAction());
     }
   }
 
-  incrementarContador(){
-    this.store.dispatch(incrementaContador())
-  }
-  decrementarContador(){
-    this.store.dispatch(decrementaContador())
-  }
+
+  
+
+ 
 
 }

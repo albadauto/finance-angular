@@ -11,6 +11,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { TesteComponent } from './pages/teste/teste.component';
 import { StoreModule } from '@ngrx/store';
 import { appReducer } from './store/app.state';
+import { loginReducer } from './store/header.state';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { appReducer } from './store/app.state';
     ReactiveFormsModule,
     NgxSpinnerModule,
     HttpClientModule,
-    StoreModule.forRoot({ app: appReducer })
+    StoreModule.forRoot({ app: appReducer, login: loginReducer})
   ],
   providers: [],
   bootstrap: [AppComponent]

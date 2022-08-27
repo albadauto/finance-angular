@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Store } from '@ngrx/store';
 import { Modal } from 'bootstrap'
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from 'src/app/services/auth.service';
+import { IHeader, loginAction } from 'src/app/store/header.state';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -21,7 +23,7 @@ export class HomeComponent implements OnInit {
 
   test: string = "Opa amigo"
   frmAll!: FormGroup
-  constructor(private spinner: NgxSpinnerService, private authService: AuthService) { }
+  constructor(private spinner: NgxSpinnerService, private authService: AuthService, private store: Store<{login: IHeader}>) { }
 
   ngOnInit(): void {
     this.modal = new window.bootstrap.Modal(document.getElementById('exampleModal') as Element);
@@ -60,10 +62,16 @@ export class HomeComponent implements OnInit {
       if(resp.auth){
         sessionStorage.setItem("token", resp.token.token);
         this.token = sessionStorage.getItem("token") as string;
+        this.store.dispatch(loginAction())
       }else{
         console.log("Deu ruim!")
       }
     });
+  }
+
+  handleUnsign(){
+    sessionStorage.removeItem("token")
+    window.location.href = "/"
   }
 
 }
